@@ -1,0 +1,113 @@
+#json-floating-box {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 500px;
+    height: 400px;
+    min-width: 250px;
+    min-height: 150px;
+    background: #1e1e1e;
+    color: #eee;
+    border: 1px solid #444;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    z-index: 99999;
+    font-family: "Fira Code", monospace, monospace;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.json-header {
+    background: #2c2c2c;
+    padding: 6px 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    border-bottom: 1px solid #444;
+    font-size: 13px;
+    cursor: default;
+}
+
+.json-controls {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.json-move {
+    cursor: move;
+    font-size: 14px;
+    color: #888;
+    padding: 2px 6px;
+    border-radius: 3px;
+    user-select: none;
+}
+
+.json-move:hover {
+    color: #fff;
+    background: #444;
+}
+
+.json-close {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 16px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.json-close:hover {
+    color: #fff;
+}
+
+.json-content {
+    padding: 10px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    height: calc(100% - 36px);
+
+    overflow: auto;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.json-resize {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    right: 2px;
+    bottom: 2px;
+    cursor: se-resize;
+    background: #444;
+    border-radius: 3px;
+    opacity: 0.7;
+}
+
+.json-resize:hover {
+    background: #666;
+    opacity: 1;
+}
+
+.string {
+    color: #ce9178;
+}
+
+.number {
+    color: #b5cea8;
+}
+
+.boolean {
+    color: #569cd6;
+}
+
+.null {
+    color: #dcdcaa;
+}
+
+.key {
+    color: #9cdcfe;
+}

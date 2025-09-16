@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Floating JSON Formatter",
+  "version": "1.0",
+  "description": "Show formatted JSON in a floating box when selecting JSON text",
+  "permissions": ["activeTab", "scripting"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["style.css"]
+    }
+  ]
+}
