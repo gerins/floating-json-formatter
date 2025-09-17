@@ -62,7 +62,7 @@ function showFloatingBox(jsonText) {
   header.className = "json-header";
 
   const title = document.createElement("span");
-  title.innerText = "JSON Preview ✨";
+  title.innerText = "JSON Preview";
 
   const controls = document.createElement("div");
   controls.className = "json-controls";
