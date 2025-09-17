@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Floating JSON Formatter",
+  "name": "JSON Quick Preview",
   "version": "1.0",
-  "description": "Show formatted JSON in a floating box when selecting JSON text",
+  "description": "Quickly show formatted JSON in a floating box when selecting JSON text",
   "permissions": ["activeTab", "scripting"],
   "content_scripts": [
     {
