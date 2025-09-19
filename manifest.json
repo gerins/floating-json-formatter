@@ -1,9 +1,8 @@
 {
   "manifest_version": 3,
   "name": "JSON Quick Preview",
-  "version": "1.0",
+  "version": "1.0.1",
   "description": "Quickly show formatted JSON in a floating box when selecting JSON text",
-  "permissions": ["activeTab", "scripting"],
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
