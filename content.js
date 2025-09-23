@@ -1,5 +1,5 @@
 let lastPosition = { bottom: "20px", right: "20px" }; // default position
-let lastSize = { width: "500px", height: "400px" }; // default size
+let lastSize = { width: "500px", height: "550px" }; // default size
 let lastRawJson = ""; // store unformatted JSON for copying
 
 function syntaxHighlight(json) {
@@ -71,12 +71,33 @@ function showFloatingBox(jsonText) {
   const copyBtn = document.createElement("button");
   copyBtn.className = "json-copy";
   copyBtn.innerText = "Copy";
-  copyBtn.onclick = () => {
+  copyBtn.onclick = async () => {
     const text = box.querySelector(".json-content").innerText;
-    navigator.clipboard.writeText(text).then(() => {
-      copyBtn.innerText = "Copied!";
+    const setStatus = (msg) => {
+      copyBtn.innerText = msg;
       setTimeout(() => (copyBtn.innerText = "Copy"), 1500);
-    });
+    };
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        // Modern API
+        await navigator.clipboard.writeText(text);
+        setStatus("Copied!");
+      } else {
+        // Fallback for HTTP / no clipboard API
+        const textarea = Object.assign(document.createElement("textarea"), {
+          value: text,
+          style: "position:fixed;opacity:0",
+        });
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+        setStatus("Copied!");
+      }
+    } catch (err) {
+      console.error("Copy failed:", err);
+    }
   };
 
   // Close Button
@@ -193,7 +214,13 @@ document.addEventListener("mouseup", (e) => {
 
     try {
       const parsed = JSON.parse(selection);
-      showFloatingBox(parsed);
+
+      // ✅ Only allow objects or arrays, not numbers/strings/bools
+      if (typeof parsed === "object" && parsed !== null) {
+        showFloatingBox(parsed);
+      } else {
+        console.log("Selection is valid JSON but not object/array, ignored");
+      }
     } catch {
       console.log("Selection is not valid JSON");
     }
