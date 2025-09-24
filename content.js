@@ -129,6 +129,14 @@ function showFloatingBox(jsonText) {
 
   makeDraggable(box, header);
   makeResizable(box, resizeHandle);
+
+  const escHandler = (e) => {
+    if (e.key === "Escape") {
+      box.remove();
+      document.removeEventListener("keydown", escHandler);
+    }
+  };
+  document.addEventListener("keydown", escHandler);
 }
 
 function makeDraggable(el, handle) {
